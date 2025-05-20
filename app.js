@@ -23,8 +23,8 @@ mongoose
   .then(() => {
     console.log("connected");
   })
-  .catch(() => {
-    console.log("error");
+  .catch((err) => {
+    console.log(err);
   });
 
 app.listen("5000", () => {
