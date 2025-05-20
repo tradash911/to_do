@@ -26,14 +26,12 @@ app.use("/api/v1/todos", todoRoutes);
   .catch((err) => {
     console.log(err);
   }); */
+const mongo = process.env.MONGO_URL;
 mongoose
-  .connect(
-    `mongodb+srv://tradash:CSGO54321@cluster0.oaayn8w.mongodb.net/todolist?retryWrites=true&w=majority&appName=Cluster0`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(mongo, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("connected");
   })
