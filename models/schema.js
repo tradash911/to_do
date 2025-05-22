@@ -18,6 +18,6 @@ const toDoSchema = new mongoose.Schema({
   },
   gallery: String,
 });
-const toDo = mongoose.model("toDo", toDoSchema, "todolist");
+const toDo = mongoose.model("toDo", toDoSchema, "gallery");
 
 export default toDo;
