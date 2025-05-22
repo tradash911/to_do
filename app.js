@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/api/v1/todos", todoRoutes);
+app.use("/api/v1/gallery", todoRoutes);
 
 const mongo = process.env.MONGO_URL;
 mongoose
