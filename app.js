@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import todoRoutes from "./routes/toDoRoutes.js";
+
 /* const router = express.Router(); */
 /*global process, a*/
 /*eslint no-undef: "error"*/
@@ -12,20 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/v1/todos", todoRoutes);
 
-/* mongoose
-  .connect(
-    `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.oaayn8w.mongodb.net/todolist?retryWrites=true&w=majority&appName=Cluster0`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => {
-    console.log("connected");
-  })
-  .catch((err) => {
-    console.log(err);
-  }); */
 const mongo = process.env.MONGO_URL;
 mongoose
   .connect(mongo, {
@@ -39,5 +26,5 @@ mongoose
     console.log(err);
   });
 app.listen("5000", () => {
-  console.log("serveer started");
+  console.log("server started");
 });

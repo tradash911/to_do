@@ -2,8 +2,15 @@ import toDo from "../models/schema.js";
 
 export const getToDos = async function (req, res) {
   try {
-    const toDos = await toDo.find();
-    res.json(toDos);
+    const toDos = await toDo.find(req.query);
+    const toDosCopy = { ...toDos };
+    const excludedFields = ["sort,"];
+    res.status(200).json({
+      status: "succes",
+      data: {
+        toDos,
+      },
+    });
   } catch (err) {
     console.log(err);
   }
