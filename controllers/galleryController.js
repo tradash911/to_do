@@ -12,7 +12,7 @@ export const getGallery = async function (req, res) {
       },
     });
   } catch (err) {
-    console.log(err);
+    res.status(404).json({ status: err, message: "error" });
   }
 };
 export const getGalleryPreview = async function (req, res) {
@@ -32,7 +32,23 @@ export const getGalleryPreview = async function (req, res) {
     res.status(200).json(data);
     console.log("get preview");
   } catch (err) {
-    console.log(err);
+    res.status(404).json({ status: err, message: "error" });
+  }
+};
+export const getArtistById = async function (req, res) {
+  try {
+    const { id } = req.params;
+    const artist = await galleryImages.findById(id);
+    if (!artist)
+      res.status(404).json({ status: "error", message: "artist not found" });
+
+    res.status(200).json({
+      status: "succes",
+      data: artist,
+    });
+    console.log("get artist by id");
+  } catch (err) {
+    res.status(404).json({ status: err, message: "error" });
   }
 };
 export const createArtist = async function (req, res) {
@@ -40,7 +56,7 @@ export const createArtist = async function (req, res) {
     const newTodo = new galleryImages(req.body);
     const save = await newTodo.save();
     res.status(201).json(save);
-  } catch (error) {
-    res.status(404).json({ status: error });
+  } catch (err) {
+    res.status(404).json({ status: err, message: "error" });
   }
 };
