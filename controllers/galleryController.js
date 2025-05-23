@@ -40,7 +40,9 @@ export const getArtistById = async function (req, res) {
     const { id } = req.params;
     const artist = await galleryImages.findById(id);
     if (!artist)
-      res.status(404).json({ status: "error", message: "artist not found" });
+      return res
+        .status(404)
+        .json({ status: "error", message: "artist not found" });
 
     res.status(200).json({
       status: "succes",
