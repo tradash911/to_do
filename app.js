@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import todoRoutes from "./routes/toDoRoutes.js";
+import galleryRoutes from "./routes/galleryRoutes.js";
 
 /* const router = express.Router(); */
 /*global process, a*/
@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/api/v1/gallery", todoRoutes);
+app.use("/api/v1/gallery", galleryRoutes);
 
 const mongo = process.env.MONGO_URL;
 mongoose
