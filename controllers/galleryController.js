@@ -53,6 +53,20 @@ export const getArtistById = async function (req, res) {
     res.status(404).json({ status: err, message: "error" });
   }
 };
+export const getAllID = async function (req, res) {
+  try {
+    const data = await galleryImages.find(
+      {},
+      {
+        _id: 1,
+      }
+    );
+    res.status(200).json(data);
+    console.log("get ids");
+  } catch (err) {
+    res.status(404).json({ status: err, message: "error" });
+  }
+};
 export const createArtist = async function (req, res) {
   try {
     const newTodo = new galleryImages(req.body);
